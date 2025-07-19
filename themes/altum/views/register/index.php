@@ -119,3 +119,7 @@
 <div class="mt-5 text-center text-muted">
     <?= sprintf(l('register.display.login'), '<a href="' . url('login' . $data->redirect_append) . '" class="font-weight-bold">' . l('register.display.login_help') . '</a>') ?></a>
 </div>
+
+<?php ob_start() ?>
+<script src="<?= ASSETS_FULL_URL ?>js/register-fix.js?v=<?= PRODUCT_CODE ?>"></script>
+<?php \Altum\Event::add_content(ob_get_clean(), 'javascript') ?>
