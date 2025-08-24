@@ -1,43 +1,43 @@
 <?php defined('ALTUMCODE') || die() ?>
 
-<div class="index-background py-9">
+<div class="index-background py-9" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
     <div class="container">
         <?= \Altum\Alerts::output_alerts() ?>
 
         <div class="row justify-content-center">
             <div class="col-11 col-md-10 col-lg-7">
-                <h1 class="index-header text-center mb-2"><?= l('index.header') ?></h1>
+                <h1 class="index-header text-center mb-4 text-white" style="font-weight: 700; letter-spacing: -0.5px; font-size: 2.5rem; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">Scanitix <?= l('index.header') ?></h1>
             </div>
 
             <div class="col-10 col-sm-8 col-lg-6">
-                <p class="index-subheader text-center mb-5"><?= l('index.subheader') ?></p>
+                <p class="index-subheader text-center mb-5 text-white" style="font-size: 1.25rem; font-weight: 300;"><?= l('index.subheader') ?></p>
             </div>
         </div>
 
-        <div class="d-flex flex-column flex-lg-row justify-content-center">
+        <div class="d-flex flex-column flex-lg-row justify-content-center gap-3">
             <?php if(settings()->codes->qr_codes_is_enabled): ?>
-                <a href="<?= \Altum\Authentication::check() ? url('qr-code-create') : url('qr/text') ?>" class="btn btn-primary index-button mb-3 mb-lg-0 mr-lg-3">
-                    <i class="fas fa-fw fa-sm fa-qrcode mr-1"></i> <?= l('index.qr') ?>
+                <a href="<?= \Altum\Authentication::check() ? url('qr-code-create') : url('qr/text') ?>" class="btn btn-gradient-primary text-white shadow-lg index-button mb-3 mb-lg-0" style="border-radius: 50px; padding: 12px 30px; font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease; transform: translateY(0); box-shadow: 0 10px 20px rgba(0,0,0,0.1); background: linear-gradient(45deg, #667eea, #764ba2);">
+                    <i class="fas fa-fw fa-sm fa-qrcode mr-2"></i> <?= l('index.qr') ?>
                 </a>
             <?php endif ?>
 
             <?php if(settings()->codes->barcodes_is_enabled): ?>
-                <a href="<?= \Altum\Authentication::check() ? url('barcode-create') : url('barcode') ?>" class="btn btn-dark index-button mb-3 mb-lg-0 mr-lg-3">
-                    <i class="fas fa-fw fa-sm fa-barcode mr-1"></i> <?= l('index.barcode') ?>
+                <a href="<?= \Altum\Authentication::check() ? url('barcode-create') : url('barcode') ?>" class="btn btn-gradient-primary text-white shadow-lg index-button mb-3 mb-lg-0" style="border-radius: 50px; padding: 12px 30px; font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease; transform: translateY(0); box-shadow: 0 10px 20px rgba(0,0,0,0.1); background: linear-gradient(45deg, #667eea, #764ba2);">
+                    <i class="fas fa-fw fa-sm fa-barcode mr-2"></i> <?= l('index.barcode') ?>
                 </a>
             <?php endif ?>
         </div>
 
         <?php if(settings()->codes->qr_reader_is_enabled || settings()->codes->barcode_reader_is_enabled): ?>
-            <div class="d-flex flex-row justify-content-center mt-3">
+            <div class="d-flex flex-row justify-content-center mt-4 gap-2">
                 <?php if(settings()->codes->qr_reader_is_enabled): ?>
-                    <a href="<?= url('qr-reader') ?>" class="btn btn-gray-200 index-button-secondary mr-3" data-toggle="tooltip" title="<?= l('qr_reader.menu') ?>">
+                    <a href="<?= url('qr-reader') ?>" class="btn btn-white-20 text-white index-button-secondary p-3" data-toggle="tooltip" title="<?= l('qr_reader.menu') ?>" style="border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: all 0.3s ease;">
                         <i class="fas fa-fw fa-sm fa-glasses"></i>
                     </a>
                 <?php endif ?>
 
                 <?php if(settings()->codes->barcode_reader_is_enabled): ?>
-                    <a href="<?= url('barcode-reader') ?>" class="btn btn-gray-200 index-button-secondary mr-3" data-toggle="tooltip" title="<?= l('barcode_reader.menu') ?>">
+                    <a href="<?= url('barcode-reader') ?>" class="btn btn-white-20 text-white index-button-secondary p-3" data-toggle="tooltip" title="<?= l('barcode_reader.menu') ?>" style="border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: all 0.3s ease;">
                         <i class="fas fa-fw fa-sm fa-print"></i>
                     </a>
                 <?php endif ?>
@@ -50,115 +50,102 @@
 <div class="container">
     <div class="row justify-content-center mt-8" data-aos="fade-up">
         <div class="col-12">
-            <img src="<?= ASSETS_FULL_URL . 'images/index/hero.png' ?>" class="img-fluid shadow rounded-lg" loading="lazy" />
+            <img src="<?= ASSETS_FULL_URL . 'images/index/hero.png' ?>" class="img-fluid shadow-lg rounded-3xl" loading="lazy" style="border-radius: 24px; max-height: 500px; object-fit: cover;" />
         </div>
     </div>
 </div>
 <div class="my-5">&nbsp;</div>
 
-
 <div class="container">
     <div class="row">
         <!-- QR Templates Widget -->
         <?php if(settings()->codes->qr_codes_is_enabled): ?>
-            <div class="col-12 col-lg-4 p-4">
-                <div class="card d-flex flex-column justify-content-between h-100 bg-gray-50" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card-body">
-                        <div class="mt-3 mb-4">
-                        <span class="p-3 rounded" style="background: #ecfdf5;">
-                            <i class="fas fa-fw fa-lg fa-qrcode" style="color: #10b981;"></i>
-                        </span>
+            <div class="col-12 col-lg-4 p-3">
+                <div class="card h-100 border-0 shadow-sm hover-lift" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-body p-4 d-flex flex-column align-items-center text-center">
+                        <div class="mt-3 mb-4 p-4 bg-gradient-success bg-opacity-10 rounded-full" style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-fw fa-lg fa-qrcode" style="color: #10b981; font-size: 2rem;"></i>
                         </div>
-                        <div class="mb-2">
-                            <span class="h5"><?= l('index.qr_templates.header') ?></span>
+                        <div class="mb-3">
+                            <h3 class="h4 mb-1"><?= l('index.qr_templates.header') ?></h3>
                         </div>
-                        <span class="text-muted"><?= sprintf(l('index.qr_templates.subheader'), count($data->available_qr_codes)) ?></span>
+                        <p class="text-muted mb-0"><?= sprintf(l('index.qr_templates.subheader'), count($data->available_qr_codes)) ?></p>
                     </div>
                 </div>
             </div>
 
             <!-- Privacy Widget -->
-            <div class="col-12 col-lg-4 p-4">
-                <div class="card d-flex flex-column justify-content-between h-100 bg-gray-50" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card-body">
-                        <div class="mt-3 mb-4">
-                        <span class="p-3 rounded" style="background: #ecfeff;">
-                            <i class="fas fa-fw fa-lg fa-user-secret" style="color: #06b6d4;"></i>
-                        </span>
+            <div class="col-12 col-lg-4 p-3">
+                <div class="card h-100 border-0 shadow-sm hover-lift" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-body p-4 d-flex flex-column align-items-center text-center">
+                        <div class="mt-3 mb-4 p-4 bg-gradient-info bg-opacity-10 rounded-full" style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-fw fa-lg fa-user-secret" style="color: #06b6d4; font-size: 2rem;"></i>
                         </div>
-                        <div class="mb-2">
-                            <span class="h5"><?= l('index.privacy.header') ?></span>
+                        <div class="mb-3">
+                            <h3 class="h4 mb-1"><?= l('index.privacy.header') ?></h3>
                         </div>
-                        <span class="text-muted"><?= l('index.privacy.subheader') ?></span>
+                        <p class="text-muted mb-0"><?= l('index.privacy.subheader') ?></p>
                     </div>
                 </div>
             </div>
 
             <!-- Customization Widget -->
-            <div class="col-12 col-lg-4 p-4">
-                <div class="card d-flex flex-column justify-content-between h-100 bg-gray-50" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card-body">
-                        <div class="mt-3 mb-4">
-                        <span class="p-3 rounded" style="background: #eef2ff;">
-                            <i class="fas fa-fw fa-lg fa-tools" style="color: #6366f1;"></i>
-                        </span>
+            <div class="col-12 col-lg-4 p-3">
+                <div class="card h-100 border-0 shadow-sm hover-lift" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-body p-4 d-flex flex-column align-items-center text-center">
+                        <div class="mt-3 mb-4 p-4 bg-gradient-primary bg-opacity-10 rounded-full" style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-fw fa-lg fa-tools" style="color: #6366f1; font-size: 2rem;"></i>
                         </div>
-                        <div class="mb-2">
-                            <span class="h5"><?= l('index.customization.header') ?></span>
+                        <div class="mb-3">
+                            <h3 class="h4 mb-1"><?= l('index.customization.header') ?></h3>
                         </div>
-                        <span class="text-muted"><?= l('index.customization.subheader') ?></span>
+                        <p class="text-muted mb-0"><?= l('index.customization.subheader') ?></p>
                     </div>
                 </div>
             </div>
         <?php endif ?>
 
         <!-- Short URLs Widget -->
-        <div class="col-12 col-lg-4 p-4">
-            <div class="card d-flex flex-column justify-content-between h-100 bg-gray-50" data-aos="fade-up" data-aos-delay="400">
-                <div class="card-body">
-                    <div class="mt-3 mb-4">
-                        <span class="p-3 rounded" style="background: #eef2ff;">
-                            <i class="fas fa-fw fa-lg fa-link" style="color: #06b6d4;"></i>
-                        </span>
+        <div class="col-12 col-lg-4 p-3">
+            <div class="card h-100 border-0 shadow-sm hover-lift" data-aos="fade-up" data-aos-delay="400">
+                <div class="card-body p-4 d-flex flex-column align-items-center text-center">
+                    <div class="mt-3 mb-4 p-4 bg-gradient-info bg-opacity-10 rounded-full" style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-fw fa-lg fa-link" style="color: #06b6d4; font-size: 2rem;"></i>
                     </div>
-                    <div class="mb-2">
-                        <span class="h5"><?= l('index.short_urls.header') ?></span>
+                    <div class="mb-3">
+                        <h3 class="h4 mb-1"><?= l('index.short_urls.header') ?></h3>
                     </div>
-                    <span class="text-muted"><?= l('index.short_urls.subheader') ?></span>
+                    <p class="text-muted mb-0"><?= l('index.short_urls.subheader') ?></p>
                 </div>
             </div>
         </div>
 
         <!-- Projects Widget -->
-        <div class="col-12 col-lg-4 p-4">
-            <div class="card d-flex flex-column justify-content-between h-100 bg-gray-50" data-aos="fade-up" data-aos-delay="500">
-                <div class="card-body">
-                    <div class="mt-3 mb-4">
-                        <span class="p-3 rounded" style="background: #faf5ff;">
-                            <i class="fas fa-fw fa-lg fa-tasks" style="color: #a855f7;"></i>
-                        </span>
+        <div class="col-12 col-lg-4 p-3">
+            <div class="card h-100 border-0 shadow-sm hover-lift" data-aos="fade-up" data-aos-delay="500">
+                <div class="card-body p-4 d-flex flex-column align-items-center text-center">
+                    <div class="mt-3 mb-4 p-4 bg-gradient-purple bg-opacity-10 rounded-full" style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-fw fa-lg fa-tasks" style="color: #a855f7; font-size: 2rem;"></i>
                     </div>
-                    <div class="mb-2">
-                        <span class="h5"><?= l('index.projects.header') ?></span>
+                    <div class="mb-3">
+                        <h3 class="h4 mb-1"><?= l('index.projects.header') ?></h3>
                     </div>
-                    <span class="text-muted"><?= l('index.projects.subheader') ?></span>
+                    <p class="text-muted mb-0"><?= l('index.projects.subheader') ?></p>
                 </div>
             </div>
         </div>
 
         <!-- Domains Widget -->
-        <div class="col-12 col-lg-4 p-4">
-            <div class="card d-flex flex-column justify-content-between h-100 bg-gray-50" data-aos="fade-up" data-aos-delay="600">
-                <div class="card-body">
-                    <div class="mt-3 mb-4">
-                        <span class="p-3 rounded" style="background: #fdf4ff;">
-                            <i class="fas fa-fw fa-lg fa-globe" style="color: #d946ef;"></i>
-                        </span>
+        <div class="col-12 col-lg-4 p-3">
+            <div class="card h-100 border-0 shadow-sm hover-lift" data-aos="fade-up" data-aos-delay="600">
+                <div class="card-body p-4 d-flex flex-column align-items-center text-center">
+                    <div class="mt-3 mb-4 p-4 bg-gradient-pink bg-opacity-10 rounded-full" style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-fw fa-lg fa-globe" style="color: #d946ef; font-size: 2rem;"></i>
                     </div>
-                    <div class="mb-2">
-                        <span class="h5"><?= l('index.domains.header') ?></span>
+                    <div class="mb-3">
+                        <h3 class="h4 mb-1"><?= l('index.domains.header') ?></h3>
                     </div>
-                    <span class="text-muted"><?= l('index.domains.subheader') ?></span>
+                    <p class="text-muted mb-0"><?= l('index.domains.subheader') ?></p>
                 </div>
             </div>
         </div>
@@ -171,32 +158,49 @@
     <div class="container">
         <div class="row" data-aos="fade-up">
             <div class="col-lg-7 mb-5">
-                <img src="<?= ASSETS_FULL_URL . 'images/index/static.png' ?>" class="img-fluid shadow rounded" loading="lazy" />
+                <div class="position-relative overflow-hidden rounded-3xl shadow-lg" style="border-radius: 24px; overflow: hidden; max-height: 500px;">
+                    <img src="<?= ASSETS_FULL_URL . 'images/index/static.png' ?>" class="img-fluid w-100 h-100 object-fit-cover" loading="lazy" style="border-radius: 24px;" />
+                    <div class="position-absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-5">
+                        <span class="badge bg-white text-primary px-3 py-1 rounded-full font-weight-bold">Static QR</span>
+                    </div>
+                </div>
             </div>
 
             <div class="col-lg-5 mb-5 d-flex align-items-center">
                 <div>
-                <span class="p-3 bg-primary-100 rounded">
-                    <i class="fas fa-fw fa-lg fa-qrcode text-primary"></i>
-                </span>
+                <div class="bg-gradient-to-r from-primary to-primary-20 bg-opacity-10 p-4 rounded-2xl mb-4 d-inline-block">
+                    <i class="fas fa-fw fa-lg fa-qrcode text-primary" style="font-size: 2.5rem;"></i>
+                </div>
 
-                    <h2 class="mt-4"><?= l('index.static.header') ?></h2>
+                    <h2 class="h3 mt-4 font-weight-bold"><?= l('index.static.header') ?></h2>
                     <p class="text-muted mt-3"><?= l('index.static.subheader') ?></p>
 
-                    <ul class="list-style-none mt-4">
-                        <li class="d-flex align-items-center mb-2">
-                            <i class="fas fa-fw fa-sm fa-check-circle text-success mr-3"></i>
-                            <div><?= l('index.static.feature1') ?></div>
-                        </li>
-                        <li class="d-flex align-items-center mb-2">
-                            <i class="fas fa-fw fa-sm fa-check-circle text-success mr-3"></i>
-                            <div><?= l('index.static.feature2') ?></div>
-                        </li>
-                        <li class="d-flex align-items-center mb-2">
-                            <i class="fas fa-fw fa-sm fa-check-circle text-success mr-3"></i>
-                            <div><?= l('index.static.feature3') ?></div>
-                        </li>
-                    </ul>
+                    <div class="mt-5">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-opacity-10 p-2 rounded-full me-3" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-check text-success"></i>
+                            </div>
+                            <div>
+                                <h5 class="mb-0"><?= l('index.static.feature1') ?></h5>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-opacity-10 p-2 rounded-full me-3" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-check text-success"></i>
+                            </div>
+                            <div>
+                                <h5 class="mb-0"><?= l('index.static.feature2') ?></h5>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-opacity-10 p-2 rounded-full me-3" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-check text-success"></i>
+                            </div>
+                            <div>
+                                <h5 class="mb-0"><?= l('index.static.feature3') ?></h5>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -208,40 +212,65 @@
         <div class="row" data-aos="fade-up">
             <div class="col-lg-5 mb-5 d-flex align-items-center order-1 order-lg-0">
                 <div>
-                <span class="p-3 bg-primary-100 rounded">
-                    <i class="fas fa-fw fa-lg fa-link text-primary"></i>
-                </span>
+                <div class="bg-gradient-to-r from-info to-info-20 bg-opacity-10 p-4 rounded-2xl mb-4 d-inline-block">
+                    <i class="fas fa-fw fa-lg fa-link text-info" style="font-size: 2.5rem;"></i>
+                </div>
 
-                    <h2 class="mt-4"><?= l('index.dynamic.header') ?></h2>
+                    <h2 class="h3 mt-4 font-weight-bold"><?= l('index.dynamic.header') ?></h2>
                     <p class="text-muted mt-3"><?= l('index.dynamic.subheader') ?></p>
 
-                    <ul class="list-style-none mt-4">
-                        <li class="d-flex align-items-center mb-2">
-                            <i class="fas fa-fw fa-sm fa-check-circle text-success mr-3"></i>
-                            <div><?= l('index.dynamic.feature1') ?></div>
-                        </li>
-                        <li class="d-flex align-items-center mb-2">
-                            <i class="fas fa-fw fa-sm fa-check-circle text-success mr-3"></i>
-                            <div><?= l('index.dynamic.feature2') ?></div>
-                        </li>
-                        <li class="d-flex align-items-center mb-2">
-                            <i class="fas fa-fw fa-sm fa-check-circle text-success mr-3"></i>
-                            <div><?= l('index.dynamic.feature3') ?></div>
-                        </li>
-                        <li class="d-flex align-items-center mb-2">
-                            <i class="fas fa-fw fa-sm fa-check-circle text-success mr-3"></i>
-                            <div><?= l('index.dynamic.feature4') ?></div>
-                        </li>
-                        <li class="d-flex align-items-center mb-2">
-                            <i class="fas fa-fw fa-sm fa-check-circle text-success mr-3"></i>
-                            <div><?= l('index.dynamic.feature5') ?></div>
-                        </li>
-                    </ul>
+                    <div class="mt-5">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-opacity-10 p-2 rounded-full me-3" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-check text-success"></i>
+                            </div>
+                            <div>
+                                <h5 class="mb-0"><?= l('index.dynamic.feature1') ?></h5>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-opacity-10 p-2 rounded-full me-3" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-check text-success"></i>
+                            </div>
+                            <div>
+                                <h5 class="mb-0"><?= l('index.dynamic.feature2') ?></h5>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-opacity-10 p-2 rounded-full me-3" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-check text-success"></i>
+                            </div>
+                            <div>
+                                <h5 class="mb-0"><?= l('index.dynamic.feature3') ?></h5>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-opacity-10 p-2 rounded-full me-3" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-check text-success"></i>
+                            </div>
+                            <div>
+                                <h5 class="mb-0"><?= l('index.dynamic.feature4') ?></h5>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-opacity-10 p-2 rounded-full me-3" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-check text-success"></i>
+                            </div>
+                            <div>
+                                <h5 class="mb-0"><?= l('index.dynamic.feature5') ?></h5>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="col-lg-7 mb-5 order-0 order-lg-1">
-                <img src="<?= ASSETS_FULL_URL . 'images/index/dynamic.png' ?>" class="img-fluid shadow rounded" loading="lazy" />
+                <div class="position-relative overflow-hidden rounded-3xl shadow-lg" style="border-radius: 24px; overflow: hidden; max-height: 500px;">
+                    <img src="<?= ASSETS_FULL_URL . 'images/index/dynamic.png' ?>" class="img-fluid w-100 h-100 object-fit-cover" loading="lazy" style="border-radius: 24px;" />
+                    <div class="position-absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-5">
+                        <span class="badge bg-white text-info px-3 py-1 rounded-full font-weight-bold">Dynamic QR</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -250,20 +279,23 @@
 
     <div class="container">
         <div class="text-center mb-5">
-            <h2><?= l('index.qr_codes.header') ?></h2>
-            <p class="text-muted mt-3"><?= l('index.qr_codes.subheader') ?></p>
+            <h2 class="display-5 fw-bold mb-3"><?= l('index.qr_codes.header') ?></h2>
+            <p class="text-muted lead"><?= l('index.qr_codes.subheader') ?></p>
         </div>
 
-        <div class="row">
+        <div class="row g-4">
             <?php foreach($data->available_qr_codes as $key => $value): ?>
-                <div class="col-12 col-lg-4 p-4">
-                    <div class="card position-relative icon-zoom-animation h-100" data-toggle="tooltip" title="<?= l('qr_codes.type.' . $key . '_description') ?>">
-                        <div class="card-body bg-gray-50 text-center d-flex flex-column justify-content-center">
-                            <div class="mb-4"><i class="<?= $value['icon'] ?> fa-fw fa-2x text-primary"></i></div>
-                            <h3 class="h4"><?= l('qr_codes.type.' . $key) ?></h3>
+                <div class="col-12 col-lg-4">
+                    <div class="card border-0 shadow-sm h-100 hover-lift transition-all" data-toggle="tooltip" title="<?= l('qr_codes.type.' . $key . '_description') ?>">
+                        <div class="card-body p-4 d-flex flex-column align-items-center text-center">
+                            <div class="p-4 bg-gradient-primary bg-opacity-10 rounded-3xl mb-4" style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;">
+                                <i class="<?= $value['icon'] ?> fa-fw fa-2x text-primary"></i>
+                            </div>
+                            <h3 class="h4 mb-3"><?= l('qr_codes.type.' . $key) ?></h3>
+                            <p class="text-muted mb-4"><?= l('qr_codes.type.' . $key . '_description') ?></p>
 
-                            <a href="<?= url('qr/' . $key) ?>" class="btn btn-block btn-sm btn-light mt-4 text-muted stretched-link">
-                                <?= sprintf(l('index.qr_codes.choose'), l('qr_codes.type.' . $key)) ?>
+                            <a href="<?= url('qr/' . $key) ?>" class="btn btn-gradient-purple mt-auto w-100 py-2 px-4 rounded-pill stretched-link" style="background: linear-gradient(45deg, #667eea, #764ba2); border: none; box-shadow: 0 4px 6px rgba(102, 126, 234, 0.1); color:white">
+                                <i class="fas fa-arrow-right me-2"></i> <?= sprintf(l('index.qr_codes.choose'), l('qr_codes.type.' . $key)) ?>
                             </a>
                         </div>
                     </div>
@@ -279,26 +311,29 @@
 
     <div class="container">
         <div class="text-center mb-5">
-            <h2><i class="fas fa-fw fa-xs fa-barcode text-primary mr-2"></i><?= l('index.barcodes.header') ?></h2>
-            <p class="text-muted mt-3"><?= l('index.barcodes.subheader') ?></p>
+            <h2 class="display-5 fw-bold mb-3"><i class="fas fa-fw fa-xs fa-barcode text-primary mr-2"></i><?= l('index.barcodes.header') ?></h2>
+            <p class="text-muted lead"><?= l('index.barcodes.subheader') ?></p>
         </div>
 
-        <div class="row">
+        <div class="row g-4">
             <?php foreach($data->available_barcodes as $key => $value): ?>
-                <div class="col-12 col-lg-4 p-4">
-                    <div class="card position-relative icon-zoom-animation h-100">
-                        <div class="card-body bg-gray-50 text-center d-flex flex-column justify-content-center">
-                            <h3 class="h4"><?= $key ?></h3>
+                <div class="col-12 col-lg-4">
+                    <div class="card border-0 shadow-sm h-100 hover-lift transition-all">
+                        <div class="card-body p-4 d-flex flex-column align-items-center text-center">
+                            <div class="p-4 bg-gradient-info bg-opacity-10 rounded-3xl mb-4" style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-barcode fa-fw fa-2x text-info"></i>
+                            </div>
+                            <h3 class="h4 mb-3"><?= $key ?></h3>
 
-                            <div class="d-flex justify-content-center mt-3">
+                            <div class="d-flex justify-content-center my-3 bg-white p-4 rounded-2xl" style="max-width: 250px; border: 1px solid #e9ecef;">
                                 <?php
                                 $generator = new Picqer\Barcode\BarcodeGeneratorSVG();
-                                echo $generator->getBarcode($value['example_value'], $key);
+                                echo $generator->getBarcode($value['example_value'], $key, 2, 100, 'black');
                                 ?>
                             </div>
 
-                            <a href="<?= url('barcode/' . str_replace('+', '-plus', $key)) ?>" class="btn btn-block btn-sm btn-light mt-4 text-muted stretched-link">
-                                <?= sprintf(l('index.barcodes.choose'), $key) ?>
+                            <a href="<?= url('barcode/' . str_replace('+', '-plus', $key)) ?>" class="btn btn-gradient-purple mt-auto w-100 py-2 px-4 rounded-pill stretched-link" style="background: linear-gradient(45deg, #667eea, #764ba2); border: none; box-shadow: 0 4px 6px rgba(102, 126, 234, 0.1); color: white;">
+                                <i class="fas fa-arrow-right me-2"></i> <?= sprintf(l('index.barcodes.choose'), $key) ?>
                             </a>
                         </div>
                     </div>
@@ -462,25 +497,25 @@
     <div class="my-5">&nbsp;</div>
 
     <div class="container">
-        <div class="card border-0 index-cta py-5 py-lg-6" data-aos="fade-up">
-            <div class="card-body">
+        <div class="bg-gradient-to-r from-purple-600 to-indigo-600 rounded-3xl shadow-lg overflow-hidden" data-aos="fade-up">
+            <div class="p-5 p-lg-6">
                 <div class="row align-items-center justify-content-center">
                     <div class="col-12 col-lg-5">
                         <div class="text-center text-lg-left mb-4 mb-lg-0">
-                            <h2 class="h1"><?= l('index.cta.header') ?></h2>
-                            <p class="h5"><?= l('index.cta.subheader') ?></p>
+                            <h2 class="h1 text-white mb-3"><?= l('index.cta.header') ?></h2>
+                            <p class="h5 text-white-80 mb-0"><?= l('index.cta.subheader') ?></p>
                         </div>
                     </div>
 
                     <div class="col-12 col-lg-5 mt-4 mt-lg-0">
                         <div class="text-center text-lg-right">
                             <?php if(\Altum\Authentication::check()): ?>
-                                <a href="<?= url('dashboard') ?>" class="btn btn-primary zoom-animation">
-                                    <?= l('dashboard.menu') ?> <i class="fas fa-fw fa-arrow-right"></i>
+                                <a href="<?= url('dashboard') ?>" class="btn btn-gradient-primary text-white px-5 py-3 rounded-pill font-weight-bold shadow-lg zoom-animation" style="background: linear-gradient(45deg, #667eea, #764ba2); border: none;">
+                                    <i class="fas fa-tachometer-alt me-2"></i> <?= l('dashboard.menu') ?> <i class="fas fa-fw fa-arrow-right ms-2"></i>
                                 </a>
                             <?php else: ?>
-                                <a href="<?= url('register') ?>" class="btn btn-primary zoom-animation">
-                                    <?= l('index.cta.register') ?> <i class="fas fa-fw fa-arrow-right"></i>
+                                <a href="<?= url('register') ?>" class="btn btn-gradient-primary text-white px-5 py-3 rounded-pill font-weight-bold shadow-lg zoom-animation" style="background: linear-gradient(45deg, #667eea, #764ba2); border: none;">
+                                    <i class="fas fa-user-plus me-2"></i> <?= l('index.cta.register') ?> <i class="fas fa-fw fa-arrow-right ms-2"></i>
                                 </a>
                             <?php endif ?>
                         </div>
